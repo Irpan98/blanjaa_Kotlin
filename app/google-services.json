@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "415470013851",
+    "firebase_url": "https://itborneo-170608.firebaseio.com",
+    "project_id": "itborneo-170608",
+    "storage_bucket": "itborneo-170608.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415470013851:android:f6547caf466b0d49eaa53e",
+        "android_client_info": {
+          "package_name": "id.itborneo.blanjaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415470013851-qpah60sm5kp57lafe1afc2ub0mbk91qb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBegqbkT96t_BhBpI4CPoluqHnxSBZ2uDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415470013851-hfi8mmca5jrf5u4moimehha74921m25l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415470013851:android:2ee0f4124b170f15",
+        "android_client_info": {
+          "package_name": "id.itborneo.kampusku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415470013851-it6s5e7orhrr9h384cdbjmfce6khfbau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.itborneo.kampusku",
+            "certificate_hash": "d3ca15eca0746c22ae7de970d2fd940067ab8732"
+          }
+        },
+        {
+          "client_id": "415470013851-ucdome1e6hguh7beea7ri1u6ht37eclu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.itborneo.kampusku",
+            "certificate_hash": "315de2bcb3eccd04b14821be15b4fda88e50f5a8"
+          }
+        },
+        {
+          "client_id": "415470013851-qpah60sm5kp57lafe1afc2ub0mbk91qb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBegqbkT96t_BhBpI4CPoluqHnxSBZ2uDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415470013851-hfi8mmca5jrf5u4moimehha74921m25l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415470013851:android:3da9fa0f42279289eaa53e",
+        "android_client_info": {
+          "package_name": "id.itborneo.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415470013851-qpah60sm5kp57lafe1afc2ub0mbk91qb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBegqbkT96t_BhBpI4CPoluqHnxSBZ2uDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415470013851-hfi8mmca5jrf5u4moimehha74921m25l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
