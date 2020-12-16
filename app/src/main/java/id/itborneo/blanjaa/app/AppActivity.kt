@@ -22,7 +22,6 @@ class AppActivity : AppCompatActivity() {
     }
 
     private fun getDataAndSendToFragment() {
-
         findNavController(R.id.AppNavHostFragment)
             .setGraph(R.navigation.app_nav_graph, intent.extras)
     }
