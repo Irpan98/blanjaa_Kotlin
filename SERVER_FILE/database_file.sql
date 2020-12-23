@@ -55,12 +55,15 @@ CREATE TABLE IF NOT EXISTS `checkouts` (
   `product_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.checkouts: ~1 rows (approximately)
+-- Dumping data for table db_blanjaa.checkouts: ~4 rows (approximately)
 /*!40000 ALTER TABLE `checkouts` DISABLE KEYS */;
 REPLACE INTO `checkouts` (`id`, `product_id`, `user_id`) VALUES
-	(31, 9, 14);
+	(31, 9, 14),
+	(33, 3, 18),
+	(52, 8, 29),
+	(53, 1, 29);
 /*!40000 ALTER TABLE `checkouts` ENABLE KEYS */;
 
 -- Dumping structure for table db_blanjaa.ci_sessions
@@ -82,11 +85,18 @@ CREATE TABLE IF NOT EXISTS `histories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `product_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `payment` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.histories: ~0 rows (approximately)
+-- Dumping data for table db_blanjaa.histories: ~4 rows (approximately)
 /*!40000 ALTER TABLE `histories` DISABLE KEYS */;
+REPLACE INTO `histories` (`id`, `product_id`, `user_id`, `date`, `payment`) VALUES
+	(15, 1, 29, '23 Dec 2020', 'GoPay'),
+	(16, 9, 29, '23 Dec 2020', 'Google Play'),
+	(17, 8, 29, '23 Dec 2020', 'Credit Card'),
+	(18, 321, 21, '1', '234234awd');
 /*!40000 ALTER TABLE `histories` ENABLE KEYS */;
 
 -- Dumping structure for table db_blanjaa.migrations
@@ -99,24 +109,18 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `time` int(11) NOT NULL,
   `batch` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.migrations: ~13 rows (approximately)
+-- Dumping data for table db_blanjaa.migrations: ~7 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 REPLACE INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-	(26, '2020-11-24-094410', 'App\\Database\\Migrations\\Products', 'default', 'App', 1606570311, 1),
-	(27, '2020-11-24-162718', 'App\\Database\\Migrations\\Categories', 'default', 'App', 1606570311, 1),
-	(28, '2020-11-25-103945', 'App\\Database\\Migrations\\Wishlists', 'default', 'App', 1606570311, 1),
-	(29, '2020-11-25-104003', 'App\\Database\\Migrations\\Histories', 'default', 'App', 1606570311, 1),
-	(34, '2020-11-25-104013', 'App\\Database\\Migrations\\Users', 'default', 'App', 1606572066, 2),
-	(35, '2020-11-25-104022', 'App\\Database\\Migrations\\BestProducts', 'default', 'App', 1606572066, 2),
-	(36, '2020-11-25-114112', 'App\\Database\\Migrations\\Checkouts', 'default', 'App', 1606572066, 2),
-	(37, '2020-11-28-140004', 'App\\Database\\Migrations\\Histories', 'default', 'App', 1606572066, 2),
-	(38, '2020-11-29-020709', 'App\\Database\\Migrations\\Users', 'default', 'App', 1606615654, 3),
-	(39, '20201128200936', 'App\\Database\\Migrations\\Migration_create_ci_sessions_table', 'default', 'App', 1606615800, 4),
-	(40, '20201128200955', 'App\\Database\\Migrations\\Migration_create_ci_sessions_table', 'default', 'App', 1606615810, 5),
-	(41, '2020-11-27-140004', 'App\\Database\\Migrations\\Histories', 'default', 'App', 1606616365, 6),
-	(42, '2020-11-27-021950', 'App\\Database\\Migrations\\Users', 'default', 'App', 1606616451, 7);
+	(50, '2020-11-24-094410', 'App\\Database\\Migrations\\Products', 'default', 'App', 1608610316, 1),
+	(51, '2020-11-24-162718', 'App\\Database\\Migrations\\Categories', 'default', 'App', 1608610316, 1),
+	(52, '2020-11-25-103945', 'App\\Database\\Migrations\\Wishlists', 'default', 'App', 1608610316, 1),
+	(53, '2020-11-25-104022', 'App\\Database\\Migrations\\BestProducts', 'default', 'App', 1608610316, 1),
+	(54, '2020-11-25-114112', 'App\\Database\\Migrations\\Checkouts', 'default', 'App', 1608610316, 1),
+	(55, '2020-11-27-021950', 'App\\Database\\Migrations\\Users', 'default', 'App', 1608610316, 1),
+	(56, '2020-11-27-140004', 'App\\Database\\Migrations\\Histories', 'default', 'App', 1608610316, 1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table db_blanjaa.products
@@ -128,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `categori_id` int(255) NOT NULL,
   `imagePath` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=455 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_blanjaa.products: ~9 rows (approximately)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
@@ -152,14 +156,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(225) NOT NULL,
   `token` longtext DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.users: ~3 rows (approximately)
+-- Dumping data for table db_blanjaa.users: ~6 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `email`, `password`, `token`) VALUES
-	(14, 'irpan', 'irpant1998@gmail.com', '$2y$10$pz7ufJbjpo9q0ZAiys8vDuoeWOlXbd0GhMH5MCfzeRMcSncBiVCHS', '2flP6k27ZT42OschoScja4X:APA91bFc90TW5_ut0buCSmX8nOUD6xsF0HwrYEp3XmymGYUnzou04PI5udF3W6gURUcPd9MdiDX8H5nUAn265Mo9qc8aGB-tABT-A4dzqM5VoUiJbYf5m1Q4aUcc6b-nDI_um-_KfKJr'),
-	(14, 'irpan', 'irpant1998@gmail.com', '$2y$10$pz7ufJbjpo9q0ZAiys8vDuoeWOlXbd0GhMH5MCfzeRMcSncBiVCHS', 'flP6k27ZT42OschoScja4X:APA91bFc90TW5_ut0buCSmX8nOUD6xsF0HwrYEp3XmymGYUnzou04PI5udF3W6gURUcPd9MdiDX8H5nUAn265Mo9qc8aGB-tABT-A4dzqM5VoUiJbYf5m1Q4aUcc6b-nDI_um-_KfKJr'),
-	(17, 'aku', 'aku@gmail.com', '$2y$10$2hkgs9czoiP9cYB3p.8Wx.18hISnYoLVoJc7kwzwDJAb5rq1tTcnC', 'esPQrKy-T1q1-8WUIvZJbI:APA91bEfGVcLyr3Hn5-xDxgqb62QcEESK1VQi7eR8xIp5P-916cZKo-UXLW-KzDdO-9FDxqKdEqKvkTWMFjZX29uSe1BizvNOujcu57zWAuTfJ7Xe78jfzBxUBgI7X4QlIIr1wzXPHcj');
+	(29, 'wa', 'aww@gmail.com', '$2y$10$eKA0ZB2gTcXOnUlJSe5e.OGEVG2HwqVH1jsxpvnmvuen8u4mgZ33G', 'e0E0nyYiSAGc1adM3S358z:APA91bECA02Uazf4EgsHaImX75xtdcJ74oOciSoQC1gnKze5H9gJHN1qrvg_GvgaMkelNd152KUAgoC-WuYJQc1EjGzvya6FiK6R4mOKZp8pz2xNvX9dYSM2KOXClegPF2tM1-PBJ98h'),
+	(30, 'aww', 'aww@gmai.com', '$2y$10$qkouR5bmz.MjJ0BLOvPoGeX/743xBQzGGDAaO0H60LBvHrwFxoGTO', 'e0E0nyYiSAGc1adM3S358z:APA91bECA02Uazf4EgsHaImX75xtdcJ74oOciSoQC1gnKze5H9gJHN1qrvg_GvgaMkelNd152KUAgoC-WuYJQc1EjGzvya6FiK6R4mOKZp8pz2xNvX9dYSM2KOXClegPF2tM1-PBJ98h'),
+	(31, 'aww', 'aww2@gmail.com', '$2y$10$ZGynyBvoFhfzDFafYy1YcedEtgvJH0FVp48OLeRKnpwiWNi93hRi.', 'e0E0nyYiSAGc1adM3S358z:APA91bECA02Uazf4EgsHaImX75xtdcJ74oOciSoQC1gnKze5H9gJHN1qrvg_GvgaMkelNd152KUAgoC-WuYJQc1EjGzvya6FiK6R4mOKZp8pz2xNvX9dYSM2KOXClegPF2tM1-PBJ98h'),
+	(32, 'qwe', 'qwe@mail.com', '$2y$10$th8MbDPnYCTuJ.B95f0hUO.XurfoFviZoxTTV0ELIwQN/2UFYULhC', 'dkwvv1SmSzu7_P8S0VzJHG:APA91bGd0YA-o0VpfjuA4EWWpodip0WNtkA0BpX-yKNmHyQkNJFcTH9E3ouVBDsEb_UfdCJNeXmthfi9N3IIKQVhcUM815lFFSjarnAtadeBaQFgXhhU3lbcCjGy6VupcVJ7uI63A1cZ'),
+	(33, 'qwe2', 'qwe2@gmail.com', '$2y$10$y8/am3AL1DknGr1.jR/rYeqhGlM7DGpf.R1T5zBnncWKhxp6ZyoOS', 'fG2lFIDGSIOY4gF7b5OAAH:APA91bGSWxBI2p-bokkbjU3ucHK3EYCWtLAI2nvXCsMTTVu9fq5fvXfIpyt6FboluizeQy8-k4Vk7rXVbr6_cA6-nZ_T3bc9OB6iXhgx_FiRhz_0FQFsCCc48NyIexUFXFdEITWglbWB'),
+	(34, 'aku3', 'aku3@gmail.com', '$2y$10$vTQqUt8lGI5HnNqglZ4wEujyf1o1NpI2ekMfTeWHf1Txl8SO330Ue', '234');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table db_blanjaa.wishlists
@@ -168,12 +175,14 @@ CREATE TABLE IF NOT EXISTS `wishlists` (
   `product_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.wishlists: ~1 rows (approximately)
+-- Dumping data for table db_blanjaa.wishlists: ~3 rows (approximately)
 /*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
 REPLACE INTO `wishlists` (`id`, `product_id`, `user_id`) VALUES
-	(41, 9, 14);
+	(41, 9, 14),
+	(43, 3, 18),
+	(45, 1, 29);
 /*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
