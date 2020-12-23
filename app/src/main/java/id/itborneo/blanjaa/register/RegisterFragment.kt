@@ -11,8 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.iid.FirebaseInstanceId
 import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.UserModel
+import id.itborneo.blanjaa.core.repository.Resource
 import id.itborneo.blanjaa.core.ui.validation.NullChecker
 import id.itborneo.blanjaa.core.ui.viewModel.ViewModelFactory
+import id.itborneo.blanjaa.core.utils.extention.isValidEmail
+import id.itborneo.blanjaa.core.utils.toastUtils.ToastTop
 import id.itborneo.blanjaa.core.utils.ui.SpinKitUtils
 import kotlinx.android.synthetic.main.fragment_register.*
 
@@ -46,17 +49,29 @@ class RegisterFragment : Fragment() {
 
     private fun isInputValid(): Boolean {
 
+
         val isNameValid =
             NullChecker(requireContext()).isInputValid(etName, "Nama tidak boleh kosong")
 
         if (!isNameValid) return false
 
+
         val isEmailValid =
             NullChecker(requireContext()).isInputValid(etEmail, "Email tidak boleh kosong")
+
         if (!isEmailValid) return false
 
+
+//        val emailInput = etEmail.text.toString().trim().toRegex()
+        if (!etEmail.text.toString().isValidEmail()) {
+            ToastTop.show(requireContext(), "Masukkan Email yang tepat")
+            return false
+        }
         val ispasswordValid =
-            NullChecker(requireContext()).isInputValid(etPassword, "Password tidak boleh kosong")
+            NullChecker(requireContext()).isInputValid(
+                etPassword,
+                "Password tidak boleh kosong"
+            )
         if (!ispasswordValid) return false
 
 
@@ -90,29 +105,43 @@ class RegisterFragment : Fragment() {
         viewModel.register(user).observe(viewLifecycleOwner, { response ->
             loading(false)
 
-            val getUser = response.data
 
-            if (getUser != null) {
-                if (getUser.message == "Berhasil Register") {
-//                    setLastLogin(email, password)
-                    //password benar
 
-                    Toast.makeText(requireContext(), getUser.message, Toast.LENGTH_LONG)
+
+            when (response) {
+                is Resource.Success -> {
+                    val getUser = response.data
+
+                    Toast.makeText(requireContext(), getUser?.message, Toast.LENGTH_LONG)
                         .show()
 
                     requireActivity().onBackPressed()
-
-                } else {
-                    //password salah
-                    Log.d(TAG, "register gagal")
-//                    showToastSalahEmailOrPassword()
-
                 }
-            } else {
-                Log.d(TAG, "register gagal")
-//                showToastSalahEmailOrPassword()
-                //user tidak ada
+
+
+                is Resource.Error -> {
+                    ToastTop.show(requireContext(), response.message ?: "Something's wrong")
+                }
             }
+
+
+//            if (getUser != null) {
+//                if (getUser.message == "Berhasil Register") {
+////                    setLastLogin(email, password)
+//                    //password benar
+//
+//
+//                } else {
+//                    //password salah
+//                    Log.d(TAG, "register gagal")
+////                    showToastSalahEmailOrPassword()
+//
+//                }
+//            } else {
+//                Log.d(TAG, "register gagal")
+////                showToastSalahEmailOrPassword()
+//                //user tidak ada
+//            }
         })
     }
 

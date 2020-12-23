@@ -2,6 +2,7 @@ package id.itborneo.blanjaa.core.source.remote.network
 
 import id.itborneo.blanjaa.core.source.remote.response.bestProduct.BestProductResponse
 import id.itborneo.blanjaa.core.source.remote.response.category.CategoryResponse
+import id.itborneo.blanjaa.core.source.remote.response.history.HistoryResponse
 import id.itborneo.blanjaa.core.source.remote.response.login.LoginResponse
 import id.itborneo.blanjaa.core.source.remote.response.product.ProductResponse
 import id.itborneo.blanjaa.core.source.remote.response.register.RegisterResponse
@@ -75,7 +76,7 @@ interface ApiService {
 
     //wishlist
     @GET("histories")
-    fun getAllHistory(): Flowable<WishlistResponse>
+    fun getAllHistory(): Flowable<HistoryResponse>
 
 
     @FormUrlEncoded
@@ -83,7 +84,10 @@ interface ApiService {
     fun addHistory(
         @Field("product_id") product_id: String,
         @Field("user_id") user_id: String,
-    ): Flowable<AddWishlistResponse>
+        @Field("date") date: String,
+        @Field("payment") payment: String,
+
+        ): Flowable<AddWishlistResponse>
 
 
 //    @DELETE("histories/{id}")

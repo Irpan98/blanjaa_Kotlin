@@ -10,7 +10,6 @@ import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.ProductModel
 import id.itborneo.blanjaa.core.ui.parent.FragmentWithViewModelandNav
 import id.itborneo.blanjaa.core.utils.mapperUtils.DataMapper
-import id.itborneo.blanjaa.wishlist.WishlistAdapter
 import kotlinx.android.synthetic.main.fragment_history.*
 
 
@@ -19,7 +18,7 @@ class HistoryFragment : FragmentWithViewModelandNav() {
 
     private val TAG = "HistoryFragment"
 
-    private lateinit var adapter: WishlistAdapter
+    private lateinit var adapter: HistoryAdapter
 
 
     override fun onCreateView(
@@ -38,7 +37,7 @@ class HistoryFragment : FragmentWithViewModelandNav() {
     }
 
     private fun initializeRecyclerView() {
-        adapter = WishlistAdapter { wishlist ->
+        adapter = HistoryAdapter { wishlist ->
             viewModel.listProduct.forEach { product ->
 
 
@@ -73,19 +72,18 @@ class HistoryFragment : FragmentWithViewModelandNav() {
 
         viewModel.getAllHistory().observe(viewLifecycleOwner) {
             Log.d(TAG, it.data.toString())
+            Log.d(TAG, "user ${viewModel.user.id}")
 
             val data = it.data
             if (data != null) {
 
-                val allHistory = DataMapper.WishResponseToModel(data, viewModel.listProduct)
-
-
-                val myHistory = DataMapper.AllWishToUserWish(
-                    allHistory,
+                val myHistory = DataMapper.HistoryResponseToModel(
+                    data,
+                    viewModel.listProduct,
                     viewModel.user.id
                 )
 
-                adapter.setWishlist(myHistory)
+                adapter.setHistories(myHistory)
 
 
             }

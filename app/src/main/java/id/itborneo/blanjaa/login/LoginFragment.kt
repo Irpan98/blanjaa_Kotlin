@@ -13,6 +13,9 @@ import id.itborneo.blanjaa.core.ui.parent.FragmentWithNav
 import id.itborneo.blanjaa.core.ui.validation.NullChecker
 import id.itborneo.blanjaa.core.ui.viewModel.ViewModelFactory
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_USER
+import id.itborneo.blanjaa.core.utils.dialog.DialogUtls
+import id.itborneo.blanjaa.core.utils.network.NetworkUtils
+import id.itborneo.blanjaa.core.utils.toastUtils.ToastTop
 import id.itborneo.blanjaa.core.utils.ui.SpinKitUtils
 import id.itborneo.blanjaa.core.utils.user.Login
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -59,8 +62,9 @@ class LoginFragment : FragmentWithNav() {
 
     private fun initButtonListener() {
         btnLogin.setOnClickListener {
-
+            if (!isInternetAvailable()) return@setOnClickListener
             if (!isInputValid()) return@setOnClickListener
+
             loading()
 
 
@@ -123,11 +127,13 @@ class LoginFragment : FragmentWithNav() {
                 } else {
                     //password salah
                     Log.d(TAG, "user password salah")
-//                    showToastSalahEmailOrPassword()
+                    ToastTop.show(requireContext(), "Email atau Password Salah")
 
                 }
             } else {
+
                 Log.d(TAG, "user email salah")
+                ToastTop.show(requireContext(), "Email atau Password Salah")
 //                showToastSalahEmailOrPassword()
                 //user tidak ada
             }
@@ -172,6 +178,19 @@ class LoginFragment : FragmentWithNav() {
 
         }
 
+
+    }
+
+    private fun isInternetAvailable(): Boolean {
+        return if (NetworkUtils(requireContext()).isInternetAvailable()) {
+            DialogUtls(requireContext()).internetAvailable()
+            true
+        } else {
+            DialogUtls(requireContext()).setDialogNoInternet {
+                isInternetAvailable()
+            }
+            false
+        }
     }
 
 

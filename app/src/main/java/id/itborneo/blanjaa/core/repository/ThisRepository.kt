@@ -9,6 +9,7 @@ import id.itborneo.blanjaa.core.data.model.UserModel
 import id.itborneo.blanjaa.core.source.local.LocalDataSource
 import id.itborneo.blanjaa.core.source.local.entity.ProductEntity
 import id.itborneo.blanjaa.core.source.remote.RemoteDataSource
+import id.itborneo.blanjaa.core.source.remote.response.history.AddHistory
 import id.itborneo.blanjaa.core.source.remote.response.product.ProductItemResponse
 import id.itborneo.blanjaa.core.utils.mapperUtils.DataMapper
 import id.itborneo.blanjaa.core.utils.network.AppExecutors
@@ -88,7 +89,7 @@ class ThisRepository private constructor(
 
 
     fun getAllHistory() = remoteDataSource.getAllHistory()
-    fun addHistory(addWishItem: AddWishModel) = remoteDataSource.addHistory(addWishItem)
+    fun addHistory(addWishItem: AddHistory) = remoteDataSource.addHistory(addWishItem)
 //    fun removeHistory(id: String) = remoteDataSource.removeHistory(id)
 
 

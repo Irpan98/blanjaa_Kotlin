@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun getToken() {
         val getToken = FirebaseInstanceId.getInstance().token
         Log.d(TAG, "getToken $getToken")

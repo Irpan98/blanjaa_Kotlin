@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="id.itborneo.blanjaa.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -25,7 +25,14 @@
         android:id="@+id/splashFragment"
         android:name="id.itborneo.blanjaa.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/app_nav_graph"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
+    </fragment>
     <activity
         android:id="@+id/appActivity"
         android:name="id.itborneo.blanjaa.app.AppActivity"

@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import id.itborneo.blanjaa.core.data.model.AddWishModel
 import id.itborneo.blanjaa.core.data.model.ProductModel
 import id.itborneo.blanjaa.core.data.model.UserModel
 import id.itborneo.blanjaa.core.data.model.WishlistModel
 import id.itborneo.blanjaa.core.repository.ThisRepository
+import id.itborneo.blanjaa.core.source.remote.response.history.AddHistory
 
 class AppViewModel(private val repo: ThisRepository) : ViewModel() {
 
@@ -58,11 +58,11 @@ class AppViewModel(private val repo: ThisRepository) : ViewModel() {
 
 
     fun getAllHistory() = LiveDataReactiveStreams.fromPublisher(repo.getAllHistory())
-    fun addHistory(addWishItem: AddWishModel) =
+    fun addHistory(addWishItem: AddHistory) =
         LiveDataReactiveStreams.fromPublisher(repo.addHistory(addWishItem))
 
 
-     val updatedproduct = MutableLiveData<Boolean>()
+    val updatedproduct = MutableLiveData<Boolean>()
 
     //category
 //    fun get

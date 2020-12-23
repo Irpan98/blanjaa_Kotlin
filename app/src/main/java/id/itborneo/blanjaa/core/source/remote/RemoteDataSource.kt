@@ -8,6 +8,8 @@ import id.itborneo.blanjaa.core.repository.Resource
 import id.itborneo.blanjaa.core.source.remote.network.ApiService
 import id.itborneo.blanjaa.core.source.remote.response.bestProduct.BestProductItemResponse
 import id.itborneo.blanjaa.core.source.remote.response.category.CategoryItemResponse
+import id.itborneo.blanjaa.core.source.remote.response.history.AddHistory
+import id.itborneo.blanjaa.core.source.remote.response.history.HistoryResponseItem
 import id.itborneo.blanjaa.core.source.remote.response.login.LoginResponse
 import id.itborneo.blanjaa.core.source.remote.response.product.ProductItemResponse
 import id.itborneo.blanjaa.core.source.remote.response.register.RegisterResponse
@@ -281,8 +283,8 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
 
 
     @SuppressLint("CheckResult")
-    fun getAllHistory(): Flowable<Resource<List<WishlistItemResponse>>> {
-        val resultData = PublishSubject.create<Resource<List<WishlistItemResponse>>>()
+    fun getAllHistory(): Flowable<Resource<List<HistoryResponseItem>>> {
+        val resultData = PublishSubject.create<Resource<List<HistoryResponseItem>>>()
 
         //get data from remote api
         val client = apiService.getAllHistory()
@@ -308,11 +310,12 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
     }
 
     @SuppressLint("CheckResult")
-    fun addHistory(wishItem: AddWishModel): Flowable<Resource<AddWishlistResponse>> {
+    fun addHistory(history: AddHistory): Flowable<Resource<AddWishlistResponse>> {
         val resultData = PublishSubject.create<Resource<AddWishlistResponse>>()
 
         //get data from remote api
-        val client = apiService.addHistory(wishItem.productId, wishItem.userId)
+        val client =
+            apiService.addHistory(history.productId, history.userId, history.date, history.payment)
 
         client
             .subscribeOn(Schedulers.computation())
@@ -381,7 +384,11 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
                     )
                 )
             }, { error ->
-                resultData.onNext(Resource.Error(error.message.toString()))
+                var msg = "Something's Wrong"
+                if (error.message == "HTTP 409 Conflict") {
+                    msg = "Gagal Register, email sudah digunakan"
+                }
+                resultData.onNext(Resource.Error(msg))
                 Log.e("RemoteDataSource", error.toString())
             })
 

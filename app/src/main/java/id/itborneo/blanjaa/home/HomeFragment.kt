@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.iid.FirebaseInstanceId
 import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.ProductModel
 import id.itborneo.blanjaa.core.data.model.UserModel
@@ -57,6 +58,7 @@ class HomeFragment : FragmentWithViewModelandNav() {
 //        observerupdatedproduct()
 
         broadcastReceive()
+        getToken()
     }
 
 
@@ -250,12 +252,19 @@ class HomeFragment : FragmentWithViewModelandNav() {
     private fun navAction(products: List<ProductModel>) {
 
         val bundle = bundleOf(
-            EXTRA_LIST_PRODUCT to products
+            EXTRA_LIST_PRODUCT to products,
+            EXTRA_USER to viewModel.user
         )
         navController.navigate(
             R.id.action_homeFragment_to_productByCategoryFragment,
             bundle
         )
 
+    }
+
+    private fun getToken() {
+        @Suppress("DEPRECATION")
+        val token = FirebaseInstanceId.getInstance().token
+        Log.d(TAG, "getToken $token")
     }
 }

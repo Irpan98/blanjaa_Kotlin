@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.WishlistModel
+import id.itborneo.blanjaa.core.utils.extention.toRupiah
 import kotlinx.android.synthetic.main.item_product.view.*
 import kotlinx.android.synthetic.main.item_product.view.tvProductName
 import kotlinx.android.synthetic.main.item_wish.view.*
@@ -50,7 +51,7 @@ class WishlistAdapter
             itemView.apply {
 
                 tvProductName.text = dataItem.nameProduct
-                tvPrice.text = "Rp ${dataItem.priceProduct}"
+                tvPrice.text = dataItem.priceProduct.toRupiah()
 
                 Glide.with(context)
                     .load(dataItem.imageProduct)

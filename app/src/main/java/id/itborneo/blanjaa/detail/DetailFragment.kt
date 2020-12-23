@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import id.itborneo.blanjaa.R
@@ -152,6 +153,10 @@ class DetailFragment : FragmentWithNav() {
                 removeCheckout()
             }
         }
+
+        ivProduct.setOnClickListener {
+            navAction(product, R.id.action_detailFragment_to_photoVieweFragment)
+        }
     }
 
     private fun removeCheckout() {
@@ -212,12 +217,12 @@ class DetailFragment : FragmentWithNav() {
 
     private fun navAction(product: ProductModel, action: Int) {
 
-//        val bundle = bundleOf(
-//            EXTRA_BUKU to buku,
-//        )
+        val bundle = bundleOf(
+            EXTRA_PRODUCT to product,
+        )
         navController.navigate(
             action,
-//            bundle
+            bundle
         )
 
     }

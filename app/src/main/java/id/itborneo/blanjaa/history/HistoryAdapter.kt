@@ -1,4 +1,4 @@
-package id.itborneo.blanjaa.checkout
+package id.itborneo.blanjaa.history
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,22 +10,20 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.itborneo.blanjaa.R
-import id.itborneo.blanjaa.core.data.model.WishlistModel
+import id.itborneo.blanjaa.core.data.model.HistoryModel
 import id.itborneo.blanjaa.core.utils.extention.toRupiah
-import kotlinx.android.synthetic.main.item_checkout.view.*
+import kotlinx.android.synthetic.main.item_history.view.*
 
 
-class CheckoutAdapter(
-    private val listener: (WishlistModel) -> Unit,
-    private val bayarListener: (WishlistModel) -> Unit
-) :
-    RecyclerView.Adapter<CheckoutAdapter.ViewHolder>() {
+class HistoryAdapter
+    (private val listener: (HistoryModel) -> Unit) :
+    RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
-    private val TAG = "ProductAdapter"
-    private var listData = listOf<WishlistModel>()
+    private val TAG = "HistoryAdapter"
+    private var listData = listOf<HistoryModel>()
 
 
-    fun setCheckout(data: List<WishlistModel>) {
+    fun setHistories(data: List<HistoryModel>) {
         this.listData = data
         Log.d(TAG, this.listData.toString())
         notifyDataSetChanged()
@@ -33,8 +31,7 @@ class CheckoutAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_checkout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
         return ViewHolder(view)
     }
 
@@ -46,26 +43,25 @@ class CheckoutAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(dataItem: WishlistModel) {
+        fun bind(dataItem: HistoryModel) {
 
             itemView.apply {
 
                 tvProductName.text = dataItem.nameProduct
                 tvPrice.text = dataItem.priceProduct.toRupiah()
+                tvDate.text = dataItem.date
+                tvPayment.text = "Dibayarkan dengan ${dataItem.payment}"
 
                 Glide.with(context)
                     .load(dataItem.imageProduct)
                     .transform(CenterCrop(), RoundedCorners(18))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(itemView.ivWish)
+
             }
 
             itemView.setOnClickListener {
                 listener(dataItem)
-            }
-
-            itemView.btnBayar.setOnClickListener {
-                bayarListener(dataItem)
             }
 
         }

@@ -51,9 +51,7 @@ class CategoryAdapter
                     .load(R.drawable.background)
                     .transform(CenterCrop(), RoundedCorners(18))
                     .into(ivBackground)
-
             }
-
 
 
             itemView.setOnClickListener {

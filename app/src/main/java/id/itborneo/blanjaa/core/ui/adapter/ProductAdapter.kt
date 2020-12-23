@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.ProductModel
+import id.itborneo.blanjaa.core.utils.extention.toRupiah
 import kotlinx.android.synthetic.main.item_product.view.*
 
 
@@ -49,7 +50,7 @@ class ProductAdapter
             itemView.apply {
 
                 tvProductName.text = dataItem.name
-                tvPrice.text = "Rp ${dataItem.price}"
+                tvPrice.text = dataItem.price.toRupiah()
 
                 Glide.with(context)
                     .load(dataItem.imagePath)
@@ -68,5 +69,6 @@ class ProductAdapter
         }
 
     }
+
 
 }

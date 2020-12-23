@@ -19,6 +19,8 @@ object ApiConfig {
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.43.46/blanjaa/public/")
+//            .baseUrl("http://10.32.15.251/blanjaa/public/")
+
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(provideOkHttpClient())

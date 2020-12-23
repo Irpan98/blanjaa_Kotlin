@@ -42,7 +42,7 @@ class MeFragment : FragmentWithViewModelandNav() {
             Login.removeLastUser(requireContext())
 
             navAction(R.id.action_meFragment_to_mainActivity)
-
+            requireActivity().finish()
 
         }
     }

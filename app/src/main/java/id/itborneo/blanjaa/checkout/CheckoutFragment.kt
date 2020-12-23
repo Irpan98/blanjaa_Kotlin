@@ -9,15 +9,19 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.itborneo.blanjaa.R
-import id.itborneo.blanjaa.core.data.model.AddWishModel
 import id.itborneo.blanjaa.core.data.model.ProductModel
+import id.itborneo.blanjaa.core.data.model.WishlistModel
+import id.itborneo.blanjaa.core.source.remote.response.history.AddHistory
 import id.itborneo.blanjaa.core.ui.parent.FragmentWithViewModelandNav
+import id.itborneo.blanjaa.core.ui.partial.BottomSheet
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_LIST_PRODUCT
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_PRODUCT
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_USER
 import id.itborneo.blanjaa.core.utils.mapperUtils.DataMapper
 import kotlinx.android.synthetic.main.fragment_checkout.*
 import kotlinx.android.synthetic.main.partial_appbar.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CheckoutFragment : FragmentWithViewModelandNav() {
@@ -120,33 +124,7 @@ class CheckoutFragment : FragmentWithViewModelandNav() {
             }
         }, { checkoutItem ->
             //bayar
-
-            viewModel.removeCheckoutItem(checkoutItem.id).observe(viewLifecycleOwner) {
-                Log.d(TAG, it.data.toString())
-
-                val data = it.data
-                if (data != null) {
-
-                    val addCheckout = AddWishModel(
-                        productId = checkoutItem.productId,
-                        userId = viewModel.user.id
-                    )
-                    viewModel.addHistory(addCheckout).observe(viewLifecycleOwner) {
-
-
-                        viewModel.refreshCheckout()
-
-                        Toast.makeText(
-                            requireContext(),
-                            "Dibayarkan, silahkan periksa history",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                }
-
-
-            }
+            bottomSheet(checkoutItem)
 
         })
 
@@ -171,4 +149,60 @@ class CheckoutFragment : FragmentWithViewModelandNav() {
 
     }
 
+    private fun bottomSheet(checkoutItem: WishlistModel) {
+        val bottomSheet = BottomSheet
+
+        bottomSheet.showBottomSheetDialog(
+            this,
+            listOf(
+                "GoPay", "Google Play", "Credit Card"
+            )
+        ) {
+
+
+            bottomSheet.close()
+
+            val c: Date = Calendar.getInstance().getTime()
+            println("Current time => $c")
+
+            val df = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+            val formattedDate: String = df.format(c)
+
+
+            val addCheckout = AddHistory(
+                productId = checkoutItem.productId,
+                userId = viewModel.user.id,
+                date = formattedDate,
+                payment = it
+
+            )
+            actionpayNow(checkoutItem, addCheckout)
+
+        }
+    }
+
+    fun actionpayNow(checkoutItem: WishlistModel, addHistory: AddHistory) {
+        viewModel.removeCheckoutItem(checkoutItem.id).observe(viewLifecycleOwner) {
+            Log.d(TAG, it.data.toString())
+
+            val data = it.data
+            if (data != null) {
+
+
+                viewModel.addHistory(addHistory).observe(viewLifecycleOwner) {
+
+                    viewModel.refreshCheckout()
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Dibayarkan, silahkan periksa history",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            }
+
+
+        }
+    }
 }
