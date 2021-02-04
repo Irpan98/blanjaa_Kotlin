@@ -27,9 +27,7 @@ class SendMessage extends ResourceController {
             CURLOPT_POSTFIELDS =>'{
                 "registration_ids":
                 [
-                    "flP6k27ZT42OschoScja4X:APA91bFc90TW5_ut0buCSmX8nOUD6xsF0HwrYEp3XmymGYUnzou04PI5udF3W6gURUcPd9MdiDX8H5nUAn265Mo9qc8aGB-tABT-A4dzqM5VoUiJbYf5m1Q4aUcc6b-nDI_um-_KfKJr",
-                    "fsa_5zXEQfya1PNYok3a_h:APA91bG59HiQgL5YEoY-FXd0VR85_Qo-k1Muw73GmIH_LjIrCtjy654lgK-5lLli0RBt7Outz7SWmVaJ4-0PlHOexv7TkTYhvbISjDDO4nv7JJsKvHGriJCZ885G2IR7vfrtcvvKerFO",
-                    "esPQrKy-T1q1-8WUIvZJbI:APA91bEfGVcLyr3Hn5-xDxgqb62QcEESK1VQi7eR8xIp5P-916cZKo-UXLW-KzDdO-9FDxqKdEqKvkTWMFjZX29uSe1BizvNOujcu57zWAuTfJ7Xe78jfzBxUBgI7X4QlIIr1wzXPHcj"
+                    "dkwvv1SmSzu7_P8S0VzJHG:APA91bGd0YA-o0VpfjuA4EWWpodip0WNtkA0BpX-yKNmHyQkNJFcTH9E3ouVBDsEb_UfdCJNeXmthfi9N3IIKQVhcUM815lFFSjarnAtadeBaQFgXhhU3lbcCjGy6VupcVJ7uI63A1cZ"
                 ],    
     
                 "data":{

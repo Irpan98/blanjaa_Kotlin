@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.UserModel
+import id.itborneo.blanjaa.core.repository.Resource
 import id.itborneo.blanjaa.core.ui.parent.FragmentWithNav
 import id.itborneo.blanjaa.core.ui.validation.NullChecker
 import id.itborneo.blanjaa.core.ui.viewModel.ViewModelFactory
@@ -37,9 +38,30 @@ class LoginFragment : FragmentWithNav() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initViewModel()
+        initServerChecking()
+
         initButtonListener()
         checkLastLogin()
+    }
+
+    private fun initServerChecking() {
+        viewModel.serverCheck().observe(viewLifecycleOwner, { response ->
+//            spinKitLoading.visibility = View.GONE
+            loading(false)
+
+            if (response is Resource.Success) {
+                Log.d("initServerChecking", "server Connected")
+                ToastTop.show(requireContext(), "Server Connected")
+            } else {
+
+                DialogUtls(requireContext()).setDialogNotConnectedServer {
+                    requireActivity().onBackPressed()
+                }
+            }
+
+        })
     }
 
     private fun isInputValid(): Boolean {
@@ -66,7 +88,6 @@ class LoginFragment : FragmentWithNav() {
             if (!isInputValid()) return@setOnClickListener
 
             loading()
-
 
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
@@ -142,9 +163,8 @@ class LoginFragment : FragmentWithNav() {
 
     private fun navActionUser(userModel: UserModel) {
 
-        val bundle = bundleOf(
-            EXTRA_USER to userModel,
-        )
+        requireActivity().finish()
+        val bundle = bundleOf(EXTRA_USER to userModel)
         navController.navigate(
             R.id.action_loginFragment_to_appActivity,
             bundle
@@ -154,31 +174,21 @@ class LoginFragment : FragmentWithNav() {
 
     private fun navActionRegister() {
 
-
         navController.navigate(
             R.id.action_loginFragment_to_registerFragment,
-
-            )
-
+        )
     }
 
     private fun initViewModel() {
-
         val factory = ViewModelFactory.getInstance(requireActivity())
-
-        viewModel =
-            ViewModelProvider(this, factory)[LoginViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
     }
 
     private fun checkLastLogin() {
-
         val user = Login.getLastUser(requireContext())
         if (user != null) {
             navActionUser(user)
-
         }
-
-
     }
 
     private fun isInternetAvailable(): Boolean {

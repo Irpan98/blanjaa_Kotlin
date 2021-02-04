@@ -172,10 +172,6 @@ class Products extends ResourceController {
 
 
         
-
-        // $listToken = ['awww','baaa']);
-
-        
         if(!empty($product_name)){
             $curl = curl_init();
 
@@ -192,13 +188,10 @@ class Products extends ResourceController {
                 '{
                     "registration_ids":
                     [
-                        "flP6k27ZT42OschoScja4X:APA91bFc90TW5_ut0buCSmX8nOUD6xsF0HwrYEp3XmymGYUnzou04PI5udF3W6gURUcPd9MdiDX8H5nUAn265Mo9qc8aGB-tABT-A4dzqM5VoUiJbYf5m1Q4aUcc6b-nDI_um-_KfKJr",
-                        "fsa_5zXEQfya1PNYok3a_h:APA91bG59HiQgL5YEoY-FXd0VR85_Qo-k1Muw73GmIH_LjIrCtjy654lgK-5lLli0RBt7Outz7SWmVaJ4-0PlHOexv7TkTYhvbISjDDO4nv7JJsKvHGriJCZ885G2IR7vfrtcvvKerFO",
-                        "esPQrKy-T1q1-8WUIvZJbI:APA91bEfGVcLyr3Hn5-xDxgqb62QcEESK1VQi7eR8xIp5P-916cZKo-UXLW-KzDdO-9FDxqKdEqKvkTWMFjZX29uSe1BizvNOujcu57zWAuTfJ7Xe78jfzBxUBgI7X4QlIIr1wzXPHcj",
-                        "fPkZsG1uQ_Og2JZdJHv6rM:APA91bE_HQ-kTazJMgw84OyvGD_D11HnS0Nho0lZEnFqbb3JaZp-634B7BcEh6VDNuv4T4TcyFdjE7Gu_Jhfn5eVa9Kk9_lBhBX3v-_9j0iwX1NRPYRxSpMhpI5sQdXUS6HeIKu5f3Vw"
+                        "fG2lFIDGSIOY4gF7b5OAAH:APA91bGSWxBI2p-bokkbjU3ucHK3EYCWtLAI2nvXCsMTTVu9fq5fvXfIpyt6FboluizeQy8-k4Vk7rXVbr6_cA6-nZ_T3bc9OB6iXhgx_FiRhz_0FQFsCCc48NyIexUFXFdEITWglbWB"
                     ],                    
                     "data":{
-                        "title":"Ini adalah title aaaaa data ",
+                        "title:'.$listToken.'",
                         "body": "Product baru ditambahkan : '.$product_name.'"
                     }
                 }',$listToken),
@@ -211,10 +204,54 @@ class Products extends ResourceController {
             $response = curl_exec($curl);
     
             curl_close($curl);
-            return $this-> setres("true",sprintf('registration_ids: %s ', json_encode($listToken)), $listToken);
+            return $this-> setres("true","", $listToken);
         }else{
             return $this -> setres("false", "tidak boleh kosong", "null");
         }
+
+        // $listToken = ['awww','baaa']);
+
+        
+        // if(!empty($product_name)){
+        //     $curl = curl_init();
+
+        //     curl_setopt_array($curl, array(
+        //         CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
+        //         CURLOPT_RETURNTRANSFER => true,
+        //         CURLOPT_ENCODING => '',
+        //         CURLOPT_MAXREDIRS => 10,
+        //         CURLOPT_TIMEOUT => 0,
+        //         CURLOPT_FOLLOWLOCATION => true,
+        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //         CURLOPT_CUSTOMREQUEST => 'POST',
+        //         CURLOPT_POSTFIELDS => sprintf(
+        //         '{
+        //             "registration_ids":
+        //             [
+        //                 "flP6k27ZT42OschoScja4X:APA91bFc90TW5_ut0buCSmX8nOUD6xsF0HwrYEp3XmymGYUnzou04PI5udF3W6gURUcPd9MdiDX8H5nUAn265Mo9qc8aGB-tABT-A4dzqM5VoUiJbYf5m1Q4aUcc6b-nDI_um-_KfKJr",
+        //                 "fsa_5zXEQfya1PNYok3a_h:APA91bG59HiQgL5YEoY-FXd0VR85_Qo-k1Muw73GmIH_LjIrCtjy654lgK-5lLli0RBt7Outz7SWmVaJ4-0PlHOexv7TkTYhvbISjDDO4nv7JJsKvHGriJCZ885G2IR7vfrtcvvKerFO",
+        //                 "esPQrKy-T1q1-8WUIvZJbI:APA91bEfGVcLyr3Hn5-xDxgqb62QcEESK1VQi7eR8xIp5P-916cZKo-UXLW-KzDdO-9FDxqKdEqKvkTWMFjZX29uSe1BizvNOujcu57zWAuTfJ7Xe78jfzBxUBgI7X4QlIIr1wzXPHcj",
+        //                 "fPkZsG1uQ_Og2JZdJHv6rM:APA91bE_HQ-kTazJMgw84OyvGD_D11HnS0Nho0lZEnFqbb3JaZp-634B7BcEh6VDNuv4T4TcyFdjE7Gu_Jhfn5eVa9Kk9_lBhBX3v-_9j0iwX1NRPYRxSpMhpI5sQdXUS6HeIKu5f3Vw",
+        //                 "e0E0nyYiSAGc1adM3S358z:APA91bECA02Uazf4EgsHaImX75xtdcJ74oOciSoQC1gnKze5H9gJHN1qrvg_GvgaMkelNd152KUAgoC-WuYJQc1EjGzvya6FiK6R4mOKZp8pz2xNvX9dYSM2KOXClegPF2tM1-PBJ98h"
+        //             ],                    
+        //             "data":{
+        //                 "title":"Ini adalah title aaaaa data ",
+        //                 "body": "Product baru ditambahkan : '.$product_name.'"
+        //             }
+        //         }',$listToken),
+        //         CURLOPT_HTTPHEADER => array(
+        //             "Authorization: key=AAAAYLvxTZs:APA91bEOcbdZKEd0_KwQ2vhD21DFc9ozz9-nNp-ntEBM6WMDY0FC4xXRvxuHSFKChUvQ9mrfSt-v05bpl2LNne_OcO2tusqqtnQP9RQd6s0I7xJX80QcgzIm5ruTR96_CHNKOSVFq_OJ",
+        //             "Content-Type: application/json"
+        //         ),
+        //     ));
+    
+        //     $response = curl_exec($curl);
+    
+        //     curl_close($curl);
+        //     return $this-> setres("true",sprintf('registration_ids: %s ', json_encode($listToken)), $listToken);
+        // }else{
+        //     return $this -> setres("false", "tidak boleh kosong", "null");
+        // }
 
 
 

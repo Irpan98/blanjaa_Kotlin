@@ -43,6 +43,8 @@ $routes -> resource('checkouts');
 $routes -> resource('bestproduct');
 $routes -> resource('histories');
 $routes -> resource('sendmessage');
+$routes -> resource('homes');
+
 
 
 

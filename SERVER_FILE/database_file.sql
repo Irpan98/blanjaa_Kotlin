@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `checkouts` (
   `product_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_blanjaa.checkouts: ~4 rows (approximately)
 /*!40000 ALTER TABLE `checkouts` DISABLE KEYS */;
@@ -88,15 +88,17 @@ CREATE TABLE IF NOT EXISTS `histories` (
   `date` varchar(20) NOT NULL,
   `payment` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.histories: ~4 rows (approximately)
+-- Dumping data for table db_blanjaa.histories: ~6 rows (approximately)
 /*!40000 ALTER TABLE `histories` DISABLE KEYS */;
 REPLACE INTO `histories` (`id`, `product_id`, `user_id`, `date`, `payment`) VALUES
 	(15, 1, 29, '23 Dec 2020', 'GoPay'),
 	(16, 9, 29, '23 Dec 2020', 'Google Play'),
 	(17, 8, 29, '23 Dec 2020', 'Credit Card'),
-	(18, 321, 21, '1', '234234awd');
+	(18, 321, 21, '1', '234234awd'),
+	(19, 3, 36, '04 Feb 2021', 'Google Play'),
+	(20, 2, 36, '04 Feb 2021', 'GoPay');
 /*!40000 ALTER TABLE `histories` ENABLE KEYS */;
 
 -- Dumping structure for table db_blanjaa.migrations
@@ -156,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(225) NOT NULL,
   `token` longtext DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.users: ~6 rows (approximately)
+-- Dumping data for table db_blanjaa.users: ~8 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `email`, `password`, `token`) VALUES
 	(29, 'wa', 'aww@gmail.com', '$2y$10$eKA0ZB2gTcXOnUlJSe5e.OGEVG2HwqVH1jsxpvnmvuen8u4mgZ33G', 'e0E0nyYiSAGc1adM3S358z:APA91bECA02Uazf4EgsHaImX75xtdcJ74oOciSoQC1gnKze5H9gJHN1qrvg_GvgaMkelNd152KUAgoC-WuYJQc1EjGzvya6FiK6R4mOKZp8pz2xNvX9dYSM2KOXClegPF2tM1-PBJ98h'),
@@ -166,7 +168,9 @@ REPLACE INTO `users` (`id`, `name`, `email`, `password`, `token`) VALUES
 	(31, 'aww', 'aww2@gmail.com', '$2y$10$ZGynyBvoFhfzDFafYy1YcedEtgvJH0FVp48OLeRKnpwiWNi93hRi.', 'e0E0nyYiSAGc1adM3S358z:APA91bECA02Uazf4EgsHaImX75xtdcJ74oOciSoQC1gnKze5H9gJHN1qrvg_GvgaMkelNd152KUAgoC-WuYJQc1EjGzvya6FiK6R4mOKZp8pz2xNvX9dYSM2KOXClegPF2tM1-PBJ98h'),
 	(32, 'qwe', 'qwe@mail.com', '$2y$10$th8MbDPnYCTuJ.B95f0hUO.XurfoFviZoxTTV0ELIwQN/2UFYULhC', 'dkwvv1SmSzu7_P8S0VzJHG:APA91bGd0YA-o0VpfjuA4EWWpodip0WNtkA0BpX-yKNmHyQkNJFcTH9E3ouVBDsEb_UfdCJNeXmthfi9N3IIKQVhcUM815lFFSjarnAtadeBaQFgXhhU3lbcCjGy6VupcVJ7uI63A1cZ'),
 	(33, 'qwe2', 'qwe2@gmail.com', '$2y$10$y8/am3AL1DknGr1.jR/rYeqhGlM7DGpf.R1T5zBnncWKhxp6ZyoOS', 'fG2lFIDGSIOY4gF7b5OAAH:APA91bGSWxBI2p-bokkbjU3ucHK3EYCWtLAI2nvXCsMTTVu9fq5fvXfIpyt6FboluizeQy8-k4Vk7rXVbr6_cA6-nZ_T3bc9OB6iXhgx_FiRhz_0FQFsCCc48NyIexUFXFdEITWglbWB'),
-	(34, 'aku3', 'aku3@gmail.com', '$2y$10$vTQqUt8lGI5HnNqglZ4wEujyf1o1NpI2ekMfTeWHf1Txl8SO330Ue', '234');
+	(34, 'aku3', 'aku3@gmail.com', '$2y$10$vTQqUt8lGI5HnNqglZ4wEujyf1o1NpI2ekMfTeWHf1Txl8SO330Ue', '234'),
+	(35, 'q', 'q@gmail.com', '$2y$10$ryJPqC3jS8JLCBOrt7rtze6RSnvEVyGPNy8svgmkRp8YVGdP7Gfze', 'dQHH4Kc1Ty29AeRebxuJu_:APA91bGIAmO555Q3AWoUX6JVdXj9Vnh84GI1_B5mr38yacRM30c4z9Ua82XNNwGERGpNxRaeEAKVDs0s_Evj-3awCQYtY9DAcU4lVPI13yCFixyi5fxQAcbvJXE1N6drvXxINrXVVgz-'),
+	(36, 'q', 'q@q.com', '$2y$10$KBGP3aTxm43/aPkRbwQZD.Me1hAQRpn1TIld5O0CrWGicKRC3vLdu', 'caLJF9qxTtedu-yhklf3KH:APA91bFQExiPz4sYTCXPtJayjWJ28WAGiWIWEqYT_S8bnBrPEhROQ2Hah1wODvO20j6z5a2LvAdKfGPznb_m8kxH2uYRPlqA7ei9-IjyGW8zk4HDyvkMTQU7U_FhyEh0Keb23lvkIr_6');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table db_blanjaa.wishlists
@@ -175,14 +179,16 @@ CREATE TABLE IF NOT EXISTS `wishlists` (
   `product_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_blanjaa.wishlists: ~3 rows (approximately)
+-- Dumping data for table db_blanjaa.wishlists: ~5 rows (approximately)
 /*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
 REPLACE INTO `wishlists` (`id`, `product_id`, `user_id`) VALUES
 	(41, 9, 14),
 	(43, 3, 18),
-	(45, 1, 29);
+	(45, 1, 29),
+	(47, 1, 36),
+	(48, 2, 36);
 /*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

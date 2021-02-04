@@ -68,4 +68,14 @@ class Auth_Model extends Model {
             
 
     }
+
+    
+    public function getUserByName($email) {
+
+
+        return $this -> getWhere(['email' => $email])->getRowArray();
+        
+            
+
+    }
 }

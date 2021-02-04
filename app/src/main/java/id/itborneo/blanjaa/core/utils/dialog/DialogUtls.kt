@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import id.itborneo.blanjaa.core.utils.constant.BASE_URL
 
 class DialogUtls(private val context: Context) {
     fun setDialogNoInternet(retry: (() -> Unit)) {
@@ -14,6 +15,24 @@ class DialogUtls(private val context: Context) {
 
         builder.setPositiveButton(
             "Retry"
+        ) { dialog, _ ->
+            dialog.dismiss()
+            retry()
+        }
+        val dialog: AlertDialog = builder.create() // calling builder.create after adding buttons
+
+        dialog.show()
+        Toast.makeText(context, "Network Unavailable!", Toast.LENGTH_LONG).show()
+    }
+
+    fun setDialogNotConnectedServer(retry: (() -> Unit)) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        builder.setCancelable(true)
+        builder.setTitle("Tidak Terhubung ke Server")
+        builder.setMessage("Apakah IP Address Server adalah $BASE_URL ? jika bukan mohon mengganti IP Address ini di file ExtraConstantUtils.kt")
+
+        builder.setPositiveButton(
+            "Close App"
         ) { dialog, _ ->
             dialog.dismiss()
             retry()

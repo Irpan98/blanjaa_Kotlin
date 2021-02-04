@@ -256,8 +256,7 @@ class HomeFragment : FragmentWithViewModelandNav() {
             EXTRA_USER to viewModel.user
         )
         navController.navigate(
-            R.id.action_homeFragment_to_productByCategoryFragment,
-            bundle
+            R.id.action_homeFragment_to_productByCategoryFragment, bundle
         )
 
     }
@@ -267,4 +266,6 @@ class HomeFragment : FragmentWithViewModelandNav() {
         val token = FirebaseInstanceId.getInstance().token
         Log.d(TAG, "getToken $token")
     }
+
+
 }

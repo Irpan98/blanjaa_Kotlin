@@ -49,9 +49,31 @@ class Auth extends ResourceController {
             'token'=> $token
         ];
 
+        $cek_register = $this-> model -> getUserByName($email);
+        
+        // if(cek_register == true){
+        //     $output =[ 
+        //         'status' => 409,
+        //         'message' => 'Gagal Register'
+        //     ];
+        //     return $this ->respond($output, 409);
+        // }
+
+
+        
+
+        if($cek_register ==true){
+            $output =[ 
+                'status' => 409,
+                'message' => 'Gagal Register, email already exist'
+            ];
+            return $this ->respond($output, 409);
+
+        }
+
         $register = $this -> model -> register($dataRegister);
 
-        if($register == true){
+         if($register == true){
             $output =[ 
                 'status' => 200,
                 'message' => 'Berhasil Register'

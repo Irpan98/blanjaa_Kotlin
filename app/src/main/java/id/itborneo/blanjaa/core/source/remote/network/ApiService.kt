@@ -116,4 +116,10 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String,
     ): Flowable<LoginResponse>
+
+
+    //connection
+    @GET("Home")
+    fun serverCheck(): Flowable<String>
 }
+

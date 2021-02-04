@@ -10,5 +10,6 @@ class LoginViewModel(private val repo: ThisRepository) : ViewModel() {
 
     fun login(user: UserModel) = LiveDataReactiveStreams.fromPublisher(repo.login(user))
 
+    fun serverCheck() = LiveDataReactiveStreams.fromPublisher(repo.serverCheck())
 
 }

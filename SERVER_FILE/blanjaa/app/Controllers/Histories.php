@@ -108,12 +108,16 @@ class Histories extends ResourceController {
         $id = $this -> request-> getPost('id');
         $product_id = $this -> request-> getPost('product_id');
         $user_id = $this -> request-> getPost('user_id');
-
+        $date = $this -> request-> getPost('date');
+        $payment = $this -> request-> getPost('payment');
+            
 
         $data = array(
             'id' => $id,
             'product_id'=> $product_id,
             'user_id' => $user_id,
+            'date' => $date,
+            'payment'=> $payment
         );
 
         if($validation-> run($data, 'history') == FALSE){

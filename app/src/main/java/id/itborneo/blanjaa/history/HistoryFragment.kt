@@ -10,7 +10,9 @@ import id.itborneo.blanjaa.R
 import id.itborneo.blanjaa.core.data.model.ProductModel
 import id.itborneo.blanjaa.core.ui.parent.FragmentWithViewModelandNav
 import id.itborneo.blanjaa.core.utils.mapperUtils.DataMapper
+import id.itborneo.blanjaa.core.utils.ui.ToolbarAppUtils
 import kotlinx.android.synthetic.main.fragment_history.*
+import kotlinx.android.synthetic.main.partial_appbar.*
 
 
 class HistoryFragment : FragmentWithViewModelandNav() {
@@ -32,6 +34,7 @@ class HistoryFragment : FragmentWithViewModelandNav() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ToolbarAppUtils(tbApp).title("History")
         initializeRecyclerView()
         getData()
     }

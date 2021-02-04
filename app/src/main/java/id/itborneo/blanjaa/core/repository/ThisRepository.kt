@@ -96,5 +96,6 @@ class ThisRepository private constructor(
     fun login(userModel: UserModel) = remoteDataSource.login(userModel)
     fun register(userModel: UserModel) = remoteDataSource.register(userModel)
 
+    fun serverCheck() = remoteDataSource.checkServer()
 
 }

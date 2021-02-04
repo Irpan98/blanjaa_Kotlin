@@ -421,4 +421,31 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
 
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
     }
+
+    @SuppressLint("CheckResult")
+    fun checkServer(): Flowable<Resource<String>> {
+        val resultData = PublishSubject.create<Resource<String>>()
+
+        //get data from remote api
+        val client = apiService.serverCheck()
+
+        client
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .take(1)
+            .subscribe({ response ->
+                val dataArray = response
+
+                resultData.onNext(
+                    if (dataArray != null) Resource.Success(dataArray) else Resource.Error(
+                        "response"
+                    )
+                )
+            }, { error ->
+                resultData.onNext(Resource.Error("server not connected"))
+                Log.e("RemoteDataSource", error.toString())
+            })
+
+        return resultData.toFlowable(BackpressureStrategy.BUFFER)
+    }
 }

@@ -15,7 +15,7 @@ fun String.toRupiah(): String? {
         result = StringBuffer(result).insert(result.length - 6 - 1, ".").toString()
     }
 
-    result = "Rp$result"
+    result = "Rp $result"
     return result
 }
 

@@ -140,47 +140,6 @@ class BestProduct extends ResourceController {
 
     }
 
-    // public function update($id = null){
-
-    //     $validation = \Config\Services::validation();
-
-    //     $bestProduct_name = isset($this -> request-> getRawInput()['bestProduct_name']) ? $this -> request-> getRawInput()['bestProduct_name']: null;
-
-    //     $bestProduct_stock = isset($this -> request-> getRawInput()['bestProduct_stock']) ? $this -> request-> getRawInput()['bestProduct_stock']: null;
-
-    //     $data = array(
-
-    //         'bestProduct_name' => $bestProduct_name,
-    //         'bestProduct_stock' => $bestProduct_stock
-
-    //     );
-
-    //     if($validation -> run($data, 'bestProduct') == FALSE){
-
-    //         $this -> isSuccess = false;
-    //         $this -> error = $validation -> getErrors();
-    //         $this -> message = "Ada Kesalahan";
-    //         $this -> status = 200;
-    //     }else {
-
-    //         $update = $this -> model-> updateBestProduct($data, $id);
-
-    //         if($update){
-    //             $this -> isSuccess = true;
-    //             $this -> message = "Success update data bestProduct";
-    //             $this -> data = $data;
-    //             $this -> status = 200;
-    //         }else{
-    //             $this -> isSuccess = false;
-    //             $this -> message = "failed  update data bestProduct";
-    //             $this -> status = 200;
-    //         }
-    //     }
-
-
-    // return $this ->  showResponse();
-
-    // }
 
 
     public function delete($id = null){

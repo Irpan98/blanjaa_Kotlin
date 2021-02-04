@@ -21,7 +21,15 @@ class Histories extends Migration
 			'user_id' => [
 				'type' => 'BIGINT',
 				'constraint' => 20,
-			]
+			],
+			'date' => [
+				'type' => 'VARCHAR',
+				'constraint' => 20,
+			],
+			'payment' => [
+				'type' => 'VARCHAR',
+				'constraint' => 20,
+			],
 
 		]);
 

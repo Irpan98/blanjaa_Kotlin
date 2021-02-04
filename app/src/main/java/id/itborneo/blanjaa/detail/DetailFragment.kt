@@ -18,6 +18,7 @@ import id.itborneo.blanjaa.core.ui.viewModel.ViewModelFactory
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_LIST_PRODUCT
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_PRODUCT
 import id.itborneo.blanjaa.core.utils.constant.EXTRA_USER
+import id.itborneo.blanjaa.core.utils.extention.toRupiah
 import id.itborneo.blanjaa.core.utils.mapperUtils.DataMapper
 import id.itborneo.blanjaa.core.utils.ui.BottomNavigationUtils
 import id.itborneo.blanjaa.core.utils.ui.SpinKitUtils
@@ -55,30 +56,24 @@ class DetailFragment : FragmentWithNav() {
         hideBottomNav()
         buttonListener()
         getInitData()
-        getData()
+        observerData()
     }
 
-    private fun getData() {
-
-
+    private fun observerData() {
         viewModel.getAllWishlist().observe(viewLifecycleOwner) {
             Log.d(TAG, "getData wishlist" + it.data.toString())
 
             val data = it.data
             if (data != null) {
 
-
                 val allWishlist = DataMapper.WishResponseToModel(data, list)
-
                 viewModel.listWishlist = DataMapper.AllWishToUserWish(
                     allWishlist,
                     viewModel.user.id
                 )
 
-
                 viewModel.listWishlist.forEach { wishitem ->
                     if (wishitem.productId == product.id) {
-
                         isWished = true
                         wishlistId = wishitem.id
                         updateUI()
@@ -252,7 +247,7 @@ class DetailFragment : FragmentWithNav() {
 
         tvName.text = product.name
         tvDescription.text = product.description
-        tvPrice.text = "Rp ${product.price}"
+        tvPrice.text = product.price.toRupiah()
 
         Glide.with(requireContext())
             .load(product.imagePath)
