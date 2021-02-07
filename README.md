@@ -13,7 +13,7 @@
 
 
 
-![1](C:\AndroidProjects\Belajar\Udacoding\Kotlin\Week11_Blanjaa\SCREENSHOOT\1.jpg)
+![1](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg)
 
 **List Screen**
 
