@@ -11,9 +11,10 @@
 
 **Screenshot**
 
+<img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpgg" width="200">
 
 
-![1](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg)
+![login](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg)
 
 **List Screen**
 
@@ -28,7 +29,7 @@
 9. History Screen
 10. Detail Product Screen
 
-**HOW TO **
+**HOW TO**
 
 1. Clone this Project
 2. Move file inside SERVER_FILE with name **blanjaa** to xampp.
