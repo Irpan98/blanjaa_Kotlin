@@ -11,8 +11,13 @@
 
 **Screenshot**
 
+![ss](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg | width=50)
 
-![](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg | width=50)
+
+
+![ss](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg)
+
+
 
 **List Screen**
 
