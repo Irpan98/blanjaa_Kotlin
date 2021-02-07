@@ -15,15 +15,16 @@
 <a href='https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/></a>
 
 
-<a href='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg'><img alt='Get it on Google Play' src='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg' height='75'/></a>
+<a href='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg'><img alt='Get it on Google Play' src='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg' height='480px'/></a>
 
-<a href='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg'><img alt='Get it on Google Play' src='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg' height='75'/></a>
+<a href='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg'><img alt='Get it on Google Play' src='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg' height='480px'/></a>
 
 ![ss](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg)
 
 <a href="https://play.google.com/store/apps/details?id=com.owncloud.android"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75"></a><a href="https://f-droid.org/packages/com.owncloud.android/"><img src="https://f-droid.org/badge/get-it-on.png" height="75"></a>
 
-
+| <img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg"> | <img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpgg"> | <img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg"> |
+| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 
 
 **List Screen**
