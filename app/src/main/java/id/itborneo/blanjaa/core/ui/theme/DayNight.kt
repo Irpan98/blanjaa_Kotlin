@@ -9,6 +9,5 @@ object DayNight {
 
     fun disableDayNight() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
     }
 }

@@ -1,11 +1,11 @@
 # Blanjaa_Kotlin
 
 
-**TODO**
+**README TODO**
 
-- [ ] APP Screenshot
+- [x] APP Screenshot
 - [ ] App Video
-- [ ] List Feature app
+- [x] List Feature app
 - [ ] List backend feature
 - [x] List Screen
 
@@ -13,7 +13,6 @@
 
 | <img src="/SCREENSHOOT/1.jpg"> | <img src="/SCREENSHOOT/2.jpg"> | <img src="/SCREENSHOOT/3.jpg"> |
 | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
-
 
 **List Screen**
 
@@ -27,6 +26,49 @@
 8. Profile Screen
 9. History Screen
 10. Detail Product Screen
+
+
+
+**Architecture**
+
+- App Arcitecture https://developer.android.com/jetpack/guide 
+- MVVM
+- 
+- Jetpack
+  - Android Navigation
+  - ViewModel
+  - LiveData
+  - Room
+
+
+
+List Features
+
+- SpinKit Loading
+- Glide
+- Firebase (Token)
+- Retrofit
+- Retrofit converter Json
+- okHttp3 logging-interceptor
+- Rx Java
+- LiveData Reactive Stream
+- Preference ktx
+- BottomSheet
+- NetworkBoundResource
+- Notification from Server
+- enum
+- LocalDataSource
+- RemoteDataSource
+- ViewModelFactory
+- Utils
+  - Dialog Utils, 
+  - String to Rupiah,
+  - GridAutofitLayoutManager
+  - DataMapper
+  - AppExecutors
+  - NetworkUtils internet checker
+  - Toast in Top screen
+  - User Preferences
 
 **HOW TO**
 
