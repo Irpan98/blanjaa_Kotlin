@@ -11,16 +11,7 @@
 
 **Screenshot**
 
-
-
-
-<a href='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg'><img alt='Get it on Google Play' src='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg' height='480px'/></a>
-
-<a href='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg'><img alt='Get it on Google Play' src='https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg' height='480px'/></a>
-
-![ss](https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg)
-
-| <img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg"> | <img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg"> | <img src="https://github.com/Irpan98/blanjaa_Kotlin/blob/master/SCREENSHOOT/1.jpg"> |
+| <img src="/SCREENSHOOT/1.jpg"> | <img src="/SCREENSHOOT/2.jpg"> | <img src="/SCREENSHOOT/3.jpg"> |
 | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 
 
